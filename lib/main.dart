@@ -1,8 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:window_size/window_size.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'mobile_layout.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
+
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowTitle('My App');
+    setWindowMaxSize(const Size(5000, 1000));
+    setWindowMinSize(const Size(750, 1000));
+  }
   runApp(const MyApp());
 }
 

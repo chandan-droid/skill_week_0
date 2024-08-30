@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SubjectCard extends StatelessWidget {
@@ -18,7 +19,7 @@ class SubjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 16),
-      width: 149,
+      width: MediaQuery.of(context).size.width*0.3,
       height: 119,
       decoration: BoxDecoration(
         color: color1,
@@ -47,9 +48,11 @@ class SubjectCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  subject,
-                  style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: Colors.white,fontFamily: 'Poppins'),
+                FittedBox(
+                  child: Text(
+                    subject,
+                    style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: Colors.white,fontFamily: 'Poppins'),
+                  ),
                 ),
               ],
             ),
