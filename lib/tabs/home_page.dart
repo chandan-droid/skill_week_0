@@ -27,8 +27,8 @@ class _HomePageState extends State<HomePage> {
              floating: true,
              pinned: true,
              centerTitle: false,
-             expandedHeight: 300,
-             flexibleSpace:  FlexibleSpaceBar(
+             expandedHeight: screenHeight*0.5,
+             flexibleSpace:  const FlexibleSpaceBar(
                background: Stack(
                  clipBehavior: Clip.hardEdge,
                  children:[
@@ -36,21 +36,20 @@ class _HomePageState extends State<HomePage> {
                      bottom:32,
                      right: 0,
                      child: Image(
-                       image: const AssetImage("lib/assets/Vector.png"),
-                       //width: screenWidth*0.86,
+                       image: AssetImage("lib/assets/Vector.png"),
+
                      ),
                    ),
                    Positioned(
                      right: 0,
                      bottom: 32,
                      child: Image(
-                       image: const AssetImage("lib/assets/image.png"),
-                       //width:screenWidth*0.7,
+                       image: AssetImage("lib/assets/image.png"),
                      ),
                    ),
                  ]
                ),
-               stretchModes: const [
+               stretchModes: [
                  StretchMode.blurBackground,
                  StretchMode.zoomBackground,
                ],
