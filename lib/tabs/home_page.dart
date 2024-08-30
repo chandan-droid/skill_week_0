@@ -30,13 +30,14 @@ class _HomePageState extends State<HomePage> {
              expandedHeight: 300,
              flexibleSpace:  FlexibleSpaceBar(
                background: Stack(
+                 clipBehavior: Clip.hardEdge,
                  children:[
                    Positioned(
                      bottom:32,
                      right: 0,
                      child: Image(
                        image: const AssetImage("lib/assets/Vector.png"),
-                       width: screenWidth*0.86,
+                       //width: screenWidth*0.86,
                      ),
                    ),
                    Positioned(
@@ -44,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                      bottom: 32,
                      child: Image(
                        image: const AssetImage("lib/assets/image.png"),
-                       width:screenWidth*0.7,
+                       //width:screenWidth*0.7,
                      ),
                    ),
                  ]
