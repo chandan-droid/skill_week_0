@@ -37,6 +37,7 @@ class _CalenderPageState extends State<CalenderPage> {
           date: data['room']
       );
       schedules.add(schedule);
+      print(schedules.length);
     }
   }
 
@@ -174,50 +175,53 @@ class _CalenderPageState extends State<CalenderPage> {
                   future: getSchedule(),
                   builder: (context,snapshot){
                     if(snapshot.connectionState == ConnectionState.done) {
-                      return ListView.builder(
-                        itemCount: schedules.length,
-                          itemBuilder:(context,index){
-                            return TimelineTile(
-                              lineXY: 0.15,
-                              alignment: TimelineAlign.manual,
-                              hasIndicator: false,
-                              axis: TimelineAxis.vertical,
-                              startChild: Container(
-                                margin: const EdgeInsets.all(5),
-                                child:  Column(
-                                  children: [
-                                    Text(
-                                      schedules[index].time,
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black,
-                                          fontFamily: 'Poppins'),
-                                    ),
-                                    const Text(
-                                      '11:35',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xffBCC1CD),
-                                          fontFamily: 'Poppins'),
-                                    ),
-                                  ],
+                      return SizedBox(
+                        height: screenHeight,
+                        child: ListView.builder(
+                          itemCount: schedules.length,
+                            itemBuilder:(context,index){
+                              return TimelineTile(
+                                lineXY: 0.15,
+                                alignment: TimelineAlign.manual,
+                                hasIndicator: false,
+                                axis: TimelineAxis.vertical,
+                                startChild: Container(
+                                  margin: const EdgeInsets.all(5),
+                                  child:  Column(
+                                    children: [
+                                      Text(
+                                        schedules[index].time,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black,
+                                            fontFamily: 'Poppins'),
+                                      ),
+                                      const Text(
+                                        '11:35',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xffBCC1CD),
+                                            fontFamily: 'Poppins'),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              endChild:  ScheduleCard(
-                                subject: schedules[index].subject,
-                                chapter: schedules[index].description,
-                                chapterNo: schedules[index].room,
-                                roomNo: schedules[index].room,
-                                teacherPic: 'lib/assets/p1.png',
-                                teacherName: schedules[index].teacher,
-                                color1: Color(0xff4DC591),
-                                isCornerWidget: false,
-                              ),
-                            );
+                                endChild:  ScheduleCard(
+                                  subject: schedules[index].subject,
+                                  chapter: schedules[index].description,
+                                  chapterNo: schedules[index].room,
+                                  roomNo: schedules[index].room,
+                                  teacherPic: 'lib/assets/p1.png',
+                                  teacherName: schedules[index].teacher,
+                                  color1: Color(0xff4DC591),
+                                  isCornerWidget: false,
+                                ),
+                              );
 
-                          }
+                            }
+                        ),
                       );
                     }else{
                       return const Center(
