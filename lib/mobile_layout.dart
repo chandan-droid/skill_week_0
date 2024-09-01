@@ -35,9 +35,9 @@ class _LayoutState extends State<Layout> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context ).size.width;
-    print(screenWidth);
+    //print(screenWidth);
     double screenHeight = MediaQuery.of(context).size.height;
-    print(screenHeight);
+    //print(screenHeight);
 
     return Scaffold(
       body: PersistentTabView(

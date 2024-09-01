@@ -15,9 +15,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context ).size.width;
-    print(screenWidth);
+    //print(screenWidth);
     double screenHeight = MediaQuery.of(context).size.height;
-    print(screenHeight);
+    //print(screenHeight);
    return SafeArea(
      child: Scaffold(
        body: CustomScrollView(
