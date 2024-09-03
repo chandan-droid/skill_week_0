@@ -23,6 +23,7 @@ class CalenderPage extends StatefulWidget {
 
 class _CalenderPageState extends State<CalenderPage> {
   List<Schedule> schedules=[];
+
   Future getSchedule() async{
     var response = await http.get(Uri.https('scheduleapi-7rkx.onrender.com','/API/get'));
     var jsonData = jsonDecode(response.body);
@@ -40,10 +41,15 @@ class _CalenderPageState extends State<CalenderPage> {
       print(schedules.length);
     }
   }
+  @override
+  void initState(){
+    super.initState();
+    getSchedule();
+  }
 
   @override
   Widget build(BuildContext context) {
-    getSchedule();
+    //getSchedule();
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 

@@ -13,7 +13,7 @@ void main() async{
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('My App');
     setWindowMaxSize(const Size(5000, 1000));
-    setWindowMinSize(const Size(750, 1000));
+    setWindowMinSize(const Size(750, 500));
   }
   runApp(const MyApp());
 }
