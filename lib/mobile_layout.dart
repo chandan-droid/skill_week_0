@@ -16,10 +16,9 @@ class Layout extends StatefulWidget {
 class _LayoutState extends State<Layout> {
   final List<Widget> _pages = [
     HomePage(),
-    CalenderPage(date: "24"),
-    CalenderPage(date: "24"),
-    CalenderPage(date: "24"),
-
+    CalendarPage(date: '24'),
+    CalendarPage(date: '24'),
+    CalendarPage(date: '24')
 
   ];
    List<PersistentBottomNavBarItem> _navBarItems() {
