@@ -44,6 +44,7 @@ dependencies:
       path: plugins/window_size
 
   intl: ^0.19.0
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:

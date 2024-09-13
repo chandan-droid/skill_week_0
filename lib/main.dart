@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:window_size/window_size.dart';
 import 'package:window_manager/window_manager.dart';
 import 'mobile_layout.dart';
@@ -14,7 +15,7 @@ void main() async{
     setWindowMaxSize(const Size(5000, 1000));
     setWindowMinSize(const Size(750, 500));
   }
-  runApp(const MyApp());
+  runApp(const GetMaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Skill++ week 0',
       theme: ThemeData(
 
-        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff00664F)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff00664F)),
         useMaterial3: true,
       ),
       home: const Layout(title: 'Flutter Demo Home Page'),

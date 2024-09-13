@@ -6,6 +6,7 @@ import 'package:timeline_tile/timeline_tile.dart';
 import 'package:http/http.dart' as http;
 import '../widgets/schedule_card.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({
