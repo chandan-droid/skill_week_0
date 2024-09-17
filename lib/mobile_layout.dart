@@ -1,57 +1,51 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:get/get.dart';
 import 'package:skill_week_0/tabs/calender_page.dart';
 import 'package:skill_week_0/tabs/home_page.dart';
 
+import 'controllers/layout_controller.dart';
+
 class Layout extends StatefulWidget {
-  const Layout({super.key, required this.title});
-
-  final String title;
-
+  const Layout({super.key});
   @override
   State<Layout> createState() => _LayoutState();
 }
 
-class _LayoutState extends State<Layout> {
-  final List<Widget> _pages = [
-    HomePage(),
-    CalendarPage(date: '24'),
-    CalendarPage(date: '24'),
-    CalendarPage(date: '24')
+ class _LayoutState extends State<Layout> {
 
-  ];
-   List<PersistentBottomNavBarItem> _navBarItems() {
-    return [
-      PersistentBottomNavBarItem(icon: const ImageIcon(AssetImage("lib/assets/icons/Home.png")),activeColorPrimary: CupertinoColors.activeOrange,inactiveColorPrimary: CupertinoColors.systemGrey),
-      PersistentBottomNavBarItem(icon: const ImageIcon(AssetImage("lib/assets/icons/Calender.png")),activeColorPrimary: CupertinoColors.activeOrange,inactiveColorPrimary: CupertinoColors.systemGrey),
-      PersistentBottomNavBarItem(icon: const ImageIcon(AssetImage("lib/assets/icons/Comment.png")),activeColorPrimary: CupertinoColors.activeOrange,inactiveColorPrimary: CupertinoColors.systemGrey),
-      PersistentBottomNavBarItem(icon: const ImageIcon(AssetImage("lib/assets/icons/Profile.png")),activeColorPrimary: CupertinoColors.activeOrange,inactiveColorPrimary: CupertinoColors.systemGrey)
+   final List<BottomNavigationBarItem> _navBarItems =
+     [
+      const BottomNavigationBarItem(label:"",icon: ImageIcon(AssetImage("lib/assets/icons/Home.png")),),
+      const BottomNavigationBarItem(label:"",icon: ImageIcon(AssetImage("lib/assets/icons/Calender.png")),),
+      const BottomNavigationBarItem(label:"",icon: ImageIcon(AssetImage("lib/assets/icons/Comment.png")),),
+      const BottomNavigationBarItem(label:"",icon: ImageIcon(AssetImage("lib/assets/icons/Profile.png")),)
     ];
-}
-  final PersistentTabController _controller = PersistentTabController(initialIndex: 0);
-
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context ).size.width;
-    //print(screenWidth);
-    double screenHeight = MediaQuery.of(context).size.height;
-    //print(screenHeight);
-
-    return Scaffold(
-      body: PersistentTabView(
-                context,
-                controller: _controller,
-                items: _navBarItems(),
-                screens: _pages,
-                confineToSafeArea: true,
-                handleAndroidBackButtonPress: true,
-                resizeToAvoidBottomInset: true,
-                hideNavigationBarWhenKeyboardAppears: true,
-                stateManagement: true,
-                navBarStyle: NavBarStyle.style5,
-                backgroundColor: Colors.white,
-              ),
+    return GetBuilder<LayoutController>(
+        builder: (controller){
+          return Scaffold(
+            body:IndexedStack(
+              index: controller.tabIndex,
+              children: [
+                HomePage(),
+                 CalendarPage(),
+                 CalendarPage(),
+                 CalendarPage()
+              ],
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              items: _navBarItems,
+              currentIndex: controller.tabIndex,
+              onTap: controller.changeTabIndex,
+              selectedItemColor: CupertinoColors.activeOrange,
+              unselectedItemColor: CupertinoColors.systemGrey ,
+            ),
+          );
+        }
     );
   }
 }
+
+
